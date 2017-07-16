@@ -3,11 +3,11 @@
 //all this shit in BasicCard has empty values for now, fill with "new"
 function BasicCard(trigger, front, back) {
 	this.trigger = true;
-	this.question = front; //my questions
-	this.answer = back; //user answers; compare this shit to the stored answers in a json package 
+	this.front = message; //my questions
+	this.answer = type; //user answers; compare this shit to the stored answers in a json package 
 	this.executeThis = function() {
 		if (this.trigger) {
-
+			//execute prompting functions below
 		}
 	}
 }
