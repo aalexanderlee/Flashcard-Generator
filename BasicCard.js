@@ -1,9 +1,15 @@
 //******** tools for basic card ********//
 
-function BasicCard(front, back) {
+//all this shit in BasicCard has empty values for now, fill with "new"
+function BasicCard(trigger, front, back) {
+	this.trigger = true;
+	this.question = front; //my questions
+	this.answer = back; //user answers; compare this shit to the stored answers in a json package 
+	this.executeThis = function() {
+		if (this.trigger) {
 
-	this.front //my questions
-	this.back //user answers; compare this shit to the stored answers in a json package 
+		}
+	}
 }
 
 inquirer.prompt([
