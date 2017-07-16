@@ -9,6 +9,25 @@ function BasicCard(trigger, front, back) {
 		if (this.trigger) {
 			//execute prompting functions below
 		}
+	};
+}
+
+var questionOne = new BasicCard (true, "How many bagels does it take to make a Jerome?", 40);
+var questionTwo = new BasicCard (true, "What are pushed to project repos on Github?", "puppies");
+var questionThree = new BasicCard (true, "What type of animal is Farley?", "cat");
+var questionFour = new BasicCard (true, "How was Tindoor rated?", "most useful");
+var questionSix = new BasicCard (true, "Are you a cheeky mofo?", "yes");
+
+var allQuestions = function(questionOne, questionTwo, questionThree, questionFour, questionFive) {
+	if (this.trigger) {
+		inquirer.prompt([
+			{
+			 type: "input";
+			 name: "question";
+			 message: BasicCard.front; //this.back = 40 
+			},
+
+			])
 	}
 }
 
@@ -43,13 +62,6 @@ inquirer.prompt([
 	 name: "questionFive";
 	 message: "Will this assignment end up an epic failure?" //this.back = "Maybe"
 	},
-
-	{
-	 type: "input";
-	 name: "questionSix";
-	 message: "What"
-	}
-
 
 
 	]).then(function(){
