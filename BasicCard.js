@@ -9,6 +9,7 @@ function BasicCard(trigger, front, back) {
 	this.answer = back; //user answer input
 	this.executeThis = function() {
 		if (this.trigger) {
+			//allQuestions(); ---> this can change, but for now this makes sense
 			//execute prompting functions below
 			//this function should be able to gather their input from inquirer
 			//this function should compare user input with correct response.answers we have stored in a json package

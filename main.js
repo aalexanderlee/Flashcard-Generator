@@ -5,6 +5,6 @@ if (process.argv[2] === "basic-card") {
 	//go to function in BasicCard.js to prompt user
 }
 
-if (process.argv[2] === "close-card") {
+if (process.argv[2] === "cloze-card") {
 	//go to function in ClozeCard.js to prompt user
 }
