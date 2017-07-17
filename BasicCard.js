@@ -25,20 +25,22 @@ qObj.qThree = new BasicCard (true, "What type of animal is Farley?", "cat"); //t
 qObj.qFour = new BasicCard (true, "How was Tindoor rated?", "most useful"); //trigger, this.front, this.back
 qObj.qFive = new BasicCard (true, "Are you a cheeky mofo?", "yes"); //trigger, this.front, this.back
 
-for (var key in qObj) {
-	var allQuestions = function(qOne, qTwo, qThree, qFour, qFive) {
-		if (this.trigger) {
-			inquirer.prompt([
-				{
-				 type: "input";
-				 name: "question";
-				 message: BasicCard.front; //this.back = 40 
-				},
+var allQuestions = function() {
+	for (var key in qObj) {
+		 {
+			if (this.trigger) {
+				inquirer.prompt([
+					{
+					 type: "input";
+					 name: "question";
+					 message: BasicCard.front; //this.back = 40 
+					},
 
 				])
+			}
 		}
 	}
-}
+};
 
 //Attempt dynaminally adding inquirer prompts before resorting to hardcoding prompts
 // inquirer.prompt([
