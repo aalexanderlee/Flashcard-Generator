@@ -13,15 +13,15 @@ function BasicCard(trigger, front, back) {
 	};
 }
 
-var questionObj = {};
-questionObj.questionOne = new BasicCard (true, "How many bagels does it take to make a Jerome?", 40);
-questionObj.questionTwo = new BasicCard (true, "What are pushed to project repos on Github?", "puppies");
-questionObj.questionThree = new BasicCard (true, "What type of animal is Farley?", "cat");
-questionObj.questionFour = new BasicCard (true, "How was Tindoor rated?", "most useful");
-questionObj.questionSix = new BasicCard (true, "Are you a cheeky mofo?", "yes");
+var qObj = {};
+qObj.qOne = new BasicCard (true, "How many bagels does it take to make a Jerome?", 40);
+qObj.qTwo = new BasicCard (true, "What are pushed to project repos on Github?", "puppies");
+qObj.qThree = new BasicCard (true, "What type of animal is Farley?", "cat");
+qObj.qFour = new BasicCard (true, "How was Tindoor rated?", "most useful");
+qObj.qFive = new BasicCard (true, "Are you a cheeky mofo?", "yes");
 
 
-var allQuestions = function(questionOne, questionTwo, questionThree, questionFour, questionFive) {
+var allQuestions = function(qOne, qTwo, qThree, qFour, qFive) {
 	if (this.trigger) {
 		inquirer.prompt([
 			{
