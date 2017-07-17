@@ -8,7 +8,7 @@ console.log("Your starting score is " + score + "."); //display this score
 function ClozeCard(trigger, cloze, partial, fullText) {
 	//Options for doing this:
 	//1) fullText exist first and we split(), then put into "message aka this.partial" and "cloze" if "cloze" is correct
-	//2) provide "partial" as "message", save "input", compare to "cloze" then join() and console.log if "cloze" matches our key
+	//2) provide "partial" as "message", grab "input", compare to "cloze" then join() and console.log if "cloze" matches our key
 	//concatinate or split()/join()?
 
 	this.trigger = true; //switches our program on
