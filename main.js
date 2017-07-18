@@ -5,7 +5,7 @@ var accessCloze = require("./ClozeCard.js"); // will grab your module.export Obj
 // node main.js "<basic-card>" ---> activates BasicCard.js (initialize score to 0, run prompts)
 // encapsulate all of BasicCard.js into one outer main function you can call on from here
 if (process.argv[2] === "basic-card") {
-	// go to function in BasicCard.js to prompt user
+	allQuestions();
 }
 
 

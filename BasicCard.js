@@ -6,17 +6,16 @@ var inquirer = require("inquirer"); // require inquirer
 var score = 0; // start scoring at zero
 console.log("Your initial score is " + score + "."); // display initial score
 
-
 // all this in BasicCard constructor has empty values for now, fill with "new" in qObj
 function BasicCard(trigger, front, back) {
 	this.trigger = true; // trigger = true || false; allows the switching on or off of questions
 	this.front = front; // inquirer "message" is our question front
 	this.back = back; // stores correct answers
-	this.executeThis = function() {
-		if (this.trigger) {
-			// allQuestions(); ---> wrap this function around everything. Where should this wrap?
-		}
-	};
+	//  this.executeThis = function() {
+	//  	if (this.trigger) {
+	//  		allQuestions(); //---> wrap this function around everything. Where should this wrap?
+	//  	}
+	// };
 }
 
 
@@ -31,8 +30,6 @@ qObj.qFive = new BasicCard (true, "Are you a cheeky mofo?", "yes");
 
 // this function will go through qObj and compare inputs as guess.userGuess
 var allQuestions = function() {
-	// var score = 0; // initial score
-	// console.log("Your initial score is " + score + "."); // display initial score
 
 	for (var key in qObj) {   	
 		
@@ -62,7 +59,7 @@ var allQuestions = function() {
 		}
 		
 	}
-
+	//allQuestions();
 	playAgainMaybe();
 }
 
@@ -73,7 +70,7 @@ var playAgainMaybe = function() {
 				
 		{
 		 type: "list", // the input type will be a list of "yes" or "no"
-		 name: userDecision, // stores the user input of "yes" or "no"
+		 name: "userDecision", // stores the user input of "yes" or "no"
 		 message: "Would you like to play again?", // will display 
 		 choices: ["Yes", "No"]
 		}
@@ -93,7 +90,7 @@ var playAgainMaybe = function() {
 
 }
 
-
+allQuestions();
 
 module.exports = BasicCard;
 
