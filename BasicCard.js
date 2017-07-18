@@ -30,6 +30,9 @@ qObj.qFive = new BasicCard (true, "Are you a cheeky mofo?", "yes");
 
 // this function will go through qObj and compare inputs as guess.userGuess
 var allQuestions = function() {
+	// var score = 0; // initial score
+	// console.log("Your initial score is " + score + "."); // display initial score
+
 	for (var key in qObj) {   	
 		
 		if (this.trigger && score < 5) {		
