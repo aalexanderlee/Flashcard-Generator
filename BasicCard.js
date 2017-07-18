@@ -12,7 +12,7 @@ function BasicCard(trigger, front, back) {
 	this.back = back; //stores correct answers
 	this.executeThis = function() {
 		if (this.trigger) {
-			//allQuestions(); ---> wrap this function around everything.
+			//allQuestions(); ---> wrap this function around everything. Where should this wrap?
 		}
 	};
 }
@@ -60,23 +60,24 @@ var allQuestions = function() {
 	playAgainMaybe();
 }
 
-
-if (score === 5) {
+var playAgainMaybe = function() {
 	console.log("Here is your final score: " + score + ".");
 	inquirer.prompt ([
 				
 		{
-		 type: confirm; //yes and no question classification
-		 name: userDecision; //stores the yes or no value after input
-		 message: "Would you like to play again?" //will display question to user for input confirmation
+		 type: "list", //the input type will be a list of "yes" or "no"
+		 name: userDecision, //stores the user input of "yes" or "no"
+		 message: "Would you like to play again?", //will display 
+		 choices: ["Yes", "No"]
 		}
 
 		]).then(function(answer) {
 			//if yes, reset score and play again
-			if (answer.userDecision === "y" || "Y" || "Yes" || "yes") {
+			if (answer.userDecision === "Yes") {
 				score = 0;
 				allQuestions();
-			} else if (answer.userDecision === "n" || "N" || "No" || "no") {
+			//if no, reset score and exit completely
+			} else if (answer.userDecision === "No") {
 				score = 0;
 				process.exit()
 			}
@@ -84,6 +85,7 @@ if (score === 5) {
 		});
 
 }
+
 
 module.exports = BasicCard;
 
