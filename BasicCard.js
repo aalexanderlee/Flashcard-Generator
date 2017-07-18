@@ -5,9 +5,10 @@ var keys = require("./keys.js"); //grabs objects from keys.js with my saved answ
 var score = 0; //start scoring at zero
 console.log("Your initial score is " + score + "."); //display initial score
 
+
 //all this in BasicCard constructor has empty values for now, fill with "new" in qObj
 function BasicCard(trigger, front, back) {
-	this.trigger = true;
+	this.trigger = true; //trigger = true || false; allows the switching on or off of questions
 	this.front = front; //inquirer "message" is our question front
 	this.back = back; //stores correct answers
 	this.executeThis = function() {
@@ -17,14 +18,15 @@ function BasicCard(trigger, front, back) {
 	};
 }
 
+
 //qObj{} contains all of our saved data (questions & correct answers)
-//trigger = true || false; allows the switching on or off of certain questions later if needed
 var qObj = {};
 qObj.qOne = new BasicCard (true, "How many bagels does it take to make a Jerome?", "40 bagels"); 
 qObj.qTwo = new BasicCard (true, "What are pushed to project repos on Github?", "puppies"); 
 qObj.qThree = new BasicCard (true, "What type of animal is Farley?", "cat"); 
 qObj.qFour = new BasicCard (true, "How was Tindoor rated?", "most useful"); 
 qObj.qFive = new BasicCard (true, "Are you a cheeky mofo?", "yes"); 
+
 
 //this function will go through qObj and compare inputs as guess.userGuess
 var allQuestions = function() {
@@ -40,18 +42,18 @@ var allQuestions = function() {
 				 message: BasicCard.front //displays the question as we go through qObj
 				}			
 					
-				]).then(function(guess) {
-						if (guess.userGuess === BasicCard.back){
-							score++ //make the score go up one if it's a match
-							console.log("That is correct!"); //tell the user it's correct
-							console.log("Your new score is " + score + "."); //display the score increment
-						} else {
-							console.log("Maybe better luck next time."); 
-							//the user guess is wrong
-							//continue prompting through qObj
-						}
+			]).then(function(guess) {
+					if (guess.userGuess === BasicCard.back){
+						score++ //make the score go up one if it's a match
+						console.log("That is correct!"); //tell the user it's correct
+						console.log("Your new score is " + score + "."); //display the score increment
+					} else {
+						console.log("Maybe better luck next time."); 
+						//the user guess is wrong
+						//continue prompting through qObj
+					}
 
-				});
+			});
 					
 		}
 		
@@ -59,6 +61,7 @@ var allQuestions = function() {
 
 	playAgainMaybe();
 }
+
 
 var playAgainMaybe = function() {
 	console.log("Here is your final score: " + score + ".");
@@ -71,18 +74,18 @@ var playAgainMaybe = function() {
 		 choices: ["Yes", "No"]
 		}
 
-		]).then(function(answer) {
-			//if yes, reset score and play again
-			if (answer.userDecision === "Yes") {
-				score = 0;
-				allQuestions();
-			//if no, reset score and exit completely
-			} else if (answer.userDecision === "No") {
-				score = 0;
-				process.exit()
-			}
+	]).then(function(answer) {
+		//if yes, reset score and play again
+		if (answer.userDecision === "Yes") {
+			score = 0;
+			allQuestions();
+		//if no, reset score and exit completely
+		} else if (answer.userDecision === "No") {
+			score = 0;
+			process.exit()
+		}
 
-		});
+	});
 
 }
 
@@ -91,41 +94,4 @@ module.exports = BasicCard;
 
 
 
-//Pseudo-coding #1:
-//Attempt dynaminally adding inquirer prompts before last-resorting to hardcoding prompts
-// inquirer.prompt([
-	
-// 	{
-// 	 type: "input";
-// 	 name: "questionOne";
-// 	 message: "How many bagels does it take to make a Jerome?"; //this.back = 40 
-// 	},
 
-// 	{
-//      type: "input";
-//      name: "questionTwo";
-//      message: "What are pushed to project repos on Github?"; //this.back = "puppies"
-// 	},
-
-// 	{
-// 	 type: "input";
-// 	 name: "questionThree";
-// 	 message: "What type of animal is Farley?"; //this.back = "cat"
-// 	},
-
-// 	{
-// 	 type: "input";
-// 	 name: "questionFour";
-// 	 message: "How was Tindoor rated?" //this.back = "Most Useful"
-// 	},
-
-// 	{
-// 	 type: "input";
-// 	 name: "questionFive";
-// 	 message: "Will this assignment end up an epic failure?" //this.back = "Maybe"
-// 	},
-
-
-// 	]).then(function(){
-
-// 	});
