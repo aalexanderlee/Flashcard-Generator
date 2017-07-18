@@ -1,6 +1,7 @@
 //******** tools for cloze card *********//
 
 var fs = require("fs"); // only if we want to log/append our questions and results later to a text file
+var inquirer = require("inquirer"); // require inquirer
 
 var score = 0; // initial score
 console.log("Your initial score is " + score + "."); // display initial score
@@ -19,10 +20,22 @@ function ClozeCard(trigger, cloze, partial, fullText) {
 	this.fullText = fullText; // this will exist after you stick cloze and partial together
 	this.executeThese = function(){
 		if (this.trigger) {
-			// allClozeQuestions(); ---> wrap this function around everything. Where should this wrap?
+			//allClozeQuestions(); ---> wrap this function around everything. Where should this wrap?
 		}
 	};
 }
+
+function newConstructor(fullText, snippet) {
+	this.fullText = fullText; 
+	this.snippet = snippet;
+	this.formattedText = function() {
+		var solution = this.fullText.replace(this.snippet, "...");
+		console.log(solution); //"...make a Jerome"
+	}
+}
+
+var newObject = new newConstructor("40 bagels make a Jerome", "40 bagels");
+newObject.formattedText()
 
 var clozeObj = {};
 // note: clozeObj.number = new ClozeCard (trigger, this.cloze, this.partial, this.fullText)
@@ -32,23 +45,26 @@ clozeObj.three = new ClozeCard (true, "a cat", "Farley is ...", "Farley is a cat
 clozeObj.four = new ClozeCard (true, "most useful", "Tindoor was rated...", "Tindoor was rated most useful");
 clozeObj.five = new ClozeCard (true, "a cheeky mofo", "You are...", "You are a cheeky mofo");
 
+var arr = Object.keys(clozeObj); //array of objects
+var counter = 0; //increase one at a time
 
 var allClozeQuestions = function() {
-	for (var key in clozeObj) {   	
-		
-		if (this.trigger && score < 5) {		
+	//for (var key in clozeObj) {   	
+		if (clozeObj[arr[counter]].trigger && counter < 5) {	
 
 			inquirer.prompt([
 
 				{
 				 type: "input", // user puts in some string type
 				 name: "userCloze", // guess.userCloze will be compared to this.cloze
-				 message: ClozeCard.partial // displays "...blah blah blah"
+				 message: clozeObj[arr[counter]].partial // returns first object in clozeObj
 				}			
 					
 			]).then(function(guess) {
-					if (guess.userCloze === ClozeCard.partial) {
+
+					if (guess.userCloze === clozeObj[arr[counter]].cloze) {
 						score++ // make the score go up one if it's a match
+						counter++ //increases the iteration
 						console.log("That is correct!"); // tell the user it's correct
 
 						// put cloze and partial into an array and join at the CORRECT indices
@@ -56,19 +72,26 @@ var allClozeQuestions = function() {
 						console.log("Your new score is " + score + "."); // display the score increment
 
 					} else {
-						console.log("Maybe better luck next time."); 
+						console.log("Maybe better luck next time.");  
 						// the user guess is wrong
 						// continue prompting through qObj
+						counter++
+						allClozeQuestions();
 					}
 
 			});
 					
 		}
 		
-	}
+	//}
 
 	playAgainMaybe();
 }
+
+var start = function() {
+	allClozeQuestions();
+}
+start();
 
 var playAgainMaybe = function() {
 	console.log("Here is your final score: " + score + ".");

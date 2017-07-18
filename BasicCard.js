@@ -1,6 +1,7 @@
 //******** tools for basic card ********//
 
 var fs = require("fs"); // only if we want to log/append our questions and results later to a text file
+var inquirer = require("inquirer"); // require inquirer
 
 var score = 0; // start scoring at zero
 console.log("Your initial score is " + score + "."); // display initial score
