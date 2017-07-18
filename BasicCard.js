@@ -1,6 +1,6 @@
 //******** tools for basic card ********//
 var keys = require("./keys.js"); //grabs objects from keys.js with my saved answers for comparison
-var basicKeyList = keys.basicKeys; //grabs values from basicKeys object
+//var basicKeyList = keys.basicKeys; //grabs values from basicKeys object
 
 //note that to get 100% correct, user has to satisfy these conditions as it iterates through qObj:
 //guess.userGuess = basicKeyList.aOne;
@@ -30,13 +30,13 @@ function BasicCard(trigger, front, back) {
 
 //qObj contains arguments we will insert to BasicCard for each question instance
 //prompt user with your message aka question
-//compare the input value to my actual answer keys in keys.js in keys.basicKeys object list 
+//as alternative way, compare the input value to my actual answer keys in keys.js in keys.basicKeys object list 
 var qObj = {};
-qObj.qOne = new BasicCard (true, "How many bagels does it take to make a Jerome?", guess.userGuess); //trigger, this.front, this.back
-qObj.qTwo = new BasicCard (true, "What are pushed to project repos on Github?", guess.userGuess); //trigger, this.front, this.back
-qObj.qThree = new BasicCard (true, "What type of animal is Farley?", guess.userGuess); //trigger, this.front, this.back
-qObj.qFour = new BasicCard (true, "How was Tindoor rated?", guess.userGuess); //trigger, this.front, this.back
-qObj.qFive = new BasicCard (true, "Are you a cheeky mofo?", guess.userGuess); //trigger, this.front, this.back
+qObj.qOne = new BasicCard (true, "How many bagels does it take to make a Jerome?", "40 bagels"); //trigger, this.front, this.back
+qObj.qTwo = new BasicCard (true, "What are pushed to project repos on Github?", "puppies"); //trigger, this.front, this.back
+qObj.qThree = new BasicCard (true, "What type of animal is Farley?", "cat"); //trigger, this.front, this.back
+qObj.qFour = new BasicCard (true, "How was Tindoor rated?", "most useful"); //trigger, this.front, this.back
+qObj.qFive = new BasicCard (true, "Are you a cheeky mofo?", "yes"); //trigger, this.front, this.back
 
 var allQuestions = function() {
 	for (var key in qObj) {   	
@@ -50,9 +50,7 @@ var allQuestions = function() {
 				}			
 					
 				]).then(function(guess) {
-
-					basicKeyList.forEach(function(basic) {
-						if (guess.userGuess === keys.basicKeys){
+						if (guess.userGuess === BasicCard.back){
 							score++
 							console.log("That is correct!");
 							console.log("Your new score is " + score + ".");
@@ -62,7 +60,7 @@ var allQuestions = function() {
 
 					});
 					
-				});
+				}
 		
 		}
 	}

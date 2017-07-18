@@ -27,7 +27,30 @@ function ClozeCard(trigger, cloze, partial, fullText) {
 
 }
 
+var clozeObj = {};
+closeObj.one = new Clozecard (true, "40 bagels", "...make a Jerome", "40 bagels make a Jerome");
+closeObj.two = new Clozecard (true, "Push all puppies", "...to Github", "Push all puppies to Github");
+closeObj.three = new Clozecard (true, "a cat", "Farley is ...", "Farley is a cat");
+closeObj.four = new Clozecard (true, "most useful", "Tindoor was rated...", "Tindoor was rated most useful");
+closeObj.five = new Clozecard (true, "a cheeky mofo", "You are...", "You are a cheeky mofo");
+
+inquirer.prompt([
+	
+	{
+	 type: "input",
+	 name: "clozeGuess",
+	 message: 
+	},
+
+
+	])
+}
+
 
 
 
 module.exports = ClozeCard;
+
+
+
+
