@@ -6,7 +6,7 @@ var score = 0; // initial score
 console.log("Your initial score is " + score + "."); // display initial score
 
 
-//all this in ClozeCard constructor has empty values for now, fill with "new" in clozeObj
+// all this in ClozeCard constructor has empty values for now, fill with "new" in clozeObj
 function ClozeCard(trigger, cloze, partial, fullText) {
 	// Options for doing this:
 	// 1) fullText exist first and we split(), then put into "message aka this.partial" and "cloze" if "cloze" is correct
