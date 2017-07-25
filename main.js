@@ -136,9 +136,16 @@ var showCards = function() {
 		}
 		questions = questions.filter(notBlank);
 		var count = 0;
-		showQuestion(questions, count);
+		displayQuestions(questions, count);
 	});
 };
+
+var displayQuestions = function(array, index) {
+	question = array[index];
+	var parsedQuestion = JSON.parse(question);
+	var questionText; //these will change if question type is basic or cloze
+	var correctResponse; //these will change if question type is basic or cloze
+}
 
 
 
