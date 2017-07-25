@@ -6,7 +6,7 @@ var fs = require('fs');
 
 inquirer.prompt([{
 	name: 'command',
-	message: 'What would you like to do?',
+	message: 'Would you like to add or show a card?',
 	type: 'list',
 	choices:[{
 		name:'add-a-flashcard'
@@ -61,9 +61,9 @@ var addCard = function() {
             }]).then(function(answer) {
                 var newBasic = new BasicFlashcard(answer.front, answer.back);
                 newBasic.create();
-                whatsNext();
+                next();
             });
-        } else if (answer.cardType === 'cloze-flashcard') {
+        } else if (answer.cardType === 'cloze-card') {
             inquirer.prompt([{
                 name: 'text',
                 message: 'What is the full text?',
@@ -102,6 +102,32 @@ var addCard = function() {
     });
 };
 
+var next = function() {
+	inquirer.prompt([{
+		name: 'nextAction',
+		message: 'Do you want to make another card or show all cards?',
+		type: 'list',
+		choices: [{
+			name: 'create-another-card'
+		},	{
+			name: 'show-another-card'
+		},	{
+			name: 'neither'
+		}]
+	}]).then(function(answer) {
+		if (answer.nextAction === 'create-another-card') {
+			addCard();
+		} else if (answer.nextAction === 'show-another-card') {
+			showCards();
+		} else {
+			return;
+		}
+	});
+};
+
+var showCards = function() {
+	fs.readFile('./log.txt', 'utf8', function)
+}
 
 
 // node main.js "<basic-card>" ---> activates BasicCard.js (initialize score to 0, run prompts)
