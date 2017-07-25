@@ -21,6 +21,36 @@ inquirer.prompt([{
 	}
 });
 
+var addCard = function() {
+	inquirer.prompt([{
+		name: 'cardType',
+		message: 'Do you want to create a basic or cloze card question?',
+		type: 'list',
+		choice: [{
+			name: 'basic-card'
+		},	{
+			name: 'cloze-card'
+		}]
+	}]).then(function(answer) {
+		if (answer.cardType === 'basic-card') {
+			inquirer.prompt([{
+				name: 'front',
+				message: 'What is your question?',
+				validate: function(input) {
+					if(input==='') {
+						console.log('Error. Add a question.');
+						return false;
+					} else {
+						return true;
+					}
+				}
+			}])
+		}
+	})
+}
+
+
+
 // node main.js "<basic-card>" ---> activates BasicCard.js (initialize score to 0, run prompts)
 // encapsulate all of BasicCard.js into one outer main function you can call on from here
 // if (process.argv[2] === "basic-card") {
