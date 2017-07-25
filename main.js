@@ -126,8 +126,21 @@ var next = function() {
 };
 
 var showCards = function() {
-	fs.readFile('./log.txt', 'utf8', function)
-}
+	fs.readFile('./log.txt', 'utf8', function(error, data) {
+		if (error) {
+			console.log('Error occurred: ' + error);
+		}
+		var questions = data.split(';');
+		var notBlank = function(value) {
+			return value;
+		}
+		questions = questions.filter(notBlank);
+		var count = 0;
+		showQuestion(questions, count);
+	});
+};
+
+
 
 
 // node main.js "<basic-card>" ---> activates BasicCard.js (initialize score to 0, run prompts)
