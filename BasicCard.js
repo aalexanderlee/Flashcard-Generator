@@ -21,17 +21,15 @@ function BasicCard(trigger, front, back) {
 
 // qObj{} contains all of our saved data (questions & correct answers)
 var qObj = {};
-qObj.qOne = new BasicCard (true, "How many bagels does it take to make a Jerome?", "40 bagels"); 
-qObj.qTwo = new BasicCard (true, "What are pushed to project repos on Github?", "puppies"); 
-qObj.qThree = new BasicCard (true, "What type of animal is Farley?", "cat"); 
-qObj.qFour = new BasicCard (true, "How was Tindoor rated?", "most useful"); 
-qObj.qFive = new BasicCard (true, "Are you a cheeky mofo?", "yes"); 
+qObj.one = new BasicCard (true, "How many bagels does it take to make a Jerome?", "40 bagels"); 
+qObj.two = new BasicCard (true, "What are pushed to project repos on Github?", "puppies"); 
+qObj.three = new BasicCard (true, "What type of animal is Farley?", "cat"); 
+qObj.four = new BasicCard (true, "How was Tindoor rated?", "most useful"); 
+qObj.five = new BasicCard (true, "Are you a cheeky mofo?", "yes"); 
 
 
 // this function will go through qObj and compare inputs as guess.userGuess
 var allQuestions = function() {
-
-	for (var key in qObj) {   	
 		
 		if (this.trigger && score < 5) {		
 
@@ -58,7 +56,7 @@ var allQuestions = function() {
 					
 		}
 		
-	}
+	
 	//allQuestions();
 	playAgainMaybe();
 }

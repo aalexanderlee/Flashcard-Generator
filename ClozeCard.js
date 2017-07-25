@@ -14,34 +14,30 @@ function ClozeCard(trigger, cloze, partial, fullText) {
 	this.fullText = fullText; // this will exist after you stick cloze and partial together
 }
 
-// function newConstructor(fullText, snippet) {
-// 	this.fullText = fullText; 
-// 	this.snippet = snippet;
-// 	this.formattedText = function() {
-// 		var solution = this.fullText.replace(this.snippet, "...");
-// 		console.log(solution); //"...make a Jerome" is your QUESTION
-// 	}
-// }
+function newConstructor(fullText, snippet) {
+	this.fullText = fullText; 
+ 	this.snippet = snippet;
+	this.formattedText = function() {
+		var solution = this.fullText.replace(this.snippet, "...");
+ 		console.log(solution); //"...make a Jerome" is your QUESTION
+ 	}
+}
 
-// var newObject = new newConstructor("40 bagels make a Jerome", "40 bagels"); //fullText, cloze
-// newObject.formattedText()
+var newObject = new newConstructor("40 bagels make a Jerome", "40 bagels"); //fullText, cloze
+newObject.formattedText()
 
-var clozeArr = [];
+
+var clozeObj = {};
 // note: clozeObj.number = new ClozeCard (trigger, this.cloze, this.partial, this.fullText)
 clozeObj.one = new ClozeCard (true, "40 bagels", "...make a Jerome", "40 bagels make a Jerome");
-clozeArr.push(clozeObj.one)
 clozeObj.two = new ClozeCard (true, "Push all puppies", "...to Github", "Push all puppies to Github");
-clozeArr.push(clozeObj.two)
 clozeObj.three = new ClozeCard (true, "a cat", "Farley is ...", "Farley is a cat");
-clozeArr.push(clozeObj.three)
 clozeObj.four = new ClozeCard (true, "most useful", "Tindoor was rated...", "Tindoor was rated most useful");
-clozeArr.push(clozeObj.four)
 clozeObj.five = new ClozeCard (true, "a cheeky mofo", "You are...", "You are a cheeky mofo");
-clozeArr.push(clozeObj.five)
 
 
-// var arr = Object.keys(clozeObj); //array of objects
-// console.log(arr);
+var arr = Object.keys(clozeObj); //array of objects
+console.log(arr);
 
 var counter = 0; //increase one at a time
 

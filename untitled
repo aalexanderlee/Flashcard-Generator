@@ -1,0 +1,13 @@
+
+
+var word = "apple";
+
+var wordArr = word.split(","); // ["a", "p", "p", "l", "e"]
+
+var reverseArr = [];
+
+	for (var i = wordArr.length; i > 0; i--) {
+		reverseArr.push(wordArr[i]);
+	}
+
+console.log(reverseArr);
