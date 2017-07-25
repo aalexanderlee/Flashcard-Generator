@@ -145,6 +145,17 @@ var displayQuestions = function(array, index) {
 	var parsedQuestion = JSON.parse(question);
 	var questionText; //these will change if question type is basic or cloze
 	var correctResponse; //these will change if question type is basic or cloze
+
+	//grabs from basic-card.js
+	if (parsedQuestion.type === 'basic') {
+		questionText = parsedQuestion.front; //basic question
+		correctResponse = parsedQuestion.back; //basic answer
+	//grabs from cloze-card.js
+	} else if (parseQuestion.type === 'cloze') {
+		questionText = parsedQuestion.clozeDeleted; //the partial sentence of the full text
+		correctResponse = parsedQuestion.cloze; //the miss phrase from full text
+	}
+
 }
 
 
