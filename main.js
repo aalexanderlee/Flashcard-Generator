@@ -21,33 +21,86 @@ inquirer.prompt([{
 	}
 });
 
+		
 var addCard = function() {
-	inquirer.prompt([{
-		name: 'cardType',
-		message: 'Do you want to create a basic or cloze card question?',
-		type: 'list',
-		choice: [{
-			name: 'basic-card'
-		},	{
-			name: 'cloze-card'
-		}]
-	}]).then(function(answer) {
-		if (answer.cardType === 'basic-card') {
-			inquirer.prompt([{
-				name: 'front',
-				message: 'What is your question?',
-				validate: function(input) {
-					if(input==='') {
-						console.log('Error. Add a question.');
-						return false;
-					} else {
-						return true;
-					}
-				}
-			}])
-		}
-	})
-}
+    // get user input
+    inquirer.prompt([{
+        name: 'cardType',
+        message: 'Do want to create a basic or cloze card?',
+        type: 'list',
+        choices: [{
+            name: 'basic-card'
+        }, {
+            name: 'cloze-card'
+        }]
+    // once user input is received
+    }]).then(function(answer) {
+        if (answer.cardType === 'basic-card') {
+            inquirer.prompt([{
+                name: 'front',
+                message: 'What is your question?',
+                validate: function(input) {
+                    if (input === '') {
+                        console.log('Please provide a question');
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }, {
+                name: 'back',
+                message: 'What is your answer?',
+                validate: function(input) {
+                    if (input === '') {
+                        console.log('Please provide an answer');
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }]).then(function(answer) {
+                var newBasic = new BasicFlashcard(answer.front, answer.back);
+                newBasic.create();
+                whatsNext();
+            });
+        } else if (answer.cardType === 'cloze-flashcard') {
+            inquirer.prompt([{
+                name: 'text',
+                message: 'What is the full text?',
+                validate: function(input) {
+                    if (input === '') {
+                        console.log('Please provide the full text');
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }, {
+                name: 'cloze',
+                message: 'What is the cloze portion?',
+                validate: function(input) {
+                    if (input === '') {
+                        console.log('Please provide the cloze portion');
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            }]).then(function(answer) {
+                var text = answer.text;
+                var cloze = answer.cloze;
+                if (text.includes(cloze)) {
+                    var newCloze = new ClozeFlashcard(text, cloze);
+                    newCloze.create();
+                    whatsNext();
+                } else {
+                    console.log('Your cloze guess is incorrect. Please try again.');
+                    addCard();
+                }
+            });
+        }
+    });
+};
 
 
 
