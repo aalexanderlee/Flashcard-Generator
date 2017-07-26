@@ -1,5 +1,5 @@
-var accessBasic = require("./BasicCard.js"); // will grab your module.export Object in BasicCard  
-var accessCloze = require("./ClozeCard.js"); // will grab your module.export Object in ClozeCard
+var accessBasic = require("./basic.js"); // will grab your module.export Object in BasicCard  
+var accessCloze = require("./cloze.js"); // will grab your module.export Object in ClozeCard
 var inquirer = require('inquirer'); // uses the package for inquirer to prompt user
 var fs = require('fs'); // uses the built in fs package to read or append to outer files
 
@@ -59,8 +59,8 @@ var addCard = function() {
                     }
                 }
             }]).then(function(answer) {
-                var newBasic = new BasicFlashcard(answer.front, answer.back);
-                newBasic.create();
+                var newBasic = new BasicFlashCard(answer.front, answer.back);
+                newBasic.createCard();
                 next();
             });
         } else if (answer.cardType === 'cloze-card') {
@@ -90,8 +90,8 @@ var addCard = function() {
                 var text = answer.text;
                 var cloze = answer.cloze;
                 if (text.includes(cloze)) {
-                    var newCloze = new ClozeFlashcard(text, cloze);
-                    newCloze.create();
+                    var newCloze = new ClozeFlashCard(text, cloze);
+                    newCloze.createCard();
                     whatsNext();
                 } else {
                     console.log('Your cloze guess is incorrect. Please try again.');
