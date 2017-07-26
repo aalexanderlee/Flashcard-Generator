@@ -1,7 +1,7 @@
 var accessBasic = require("./BasicCard.js"); // will grab your module.export Object in BasicCard  
 var accessCloze = require("./ClozeCard.js"); // will grab your module.export Object in ClozeCard
-var inquirer = require('inquirer');
-var fs = require('fs');
+var inquirer = require('inquirer'); // uses the package for inquirer to prompt user
+var fs = require('fs'); // uses the built in fs package to read or append to outer files
 
 
 inquirer.prompt([{
@@ -102,6 +102,7 @@ var addCard = function() {
     });
 };
 
+
 var next = function() {
 	inquirer.prompt([{
 		name: 'nextAction',
@@ -140,6 +141,7 @@ var showCards = function() {
 	});
 };
 
+
 var displayQuestions = function(array, index) {
 	question = array[index];
 	var parsedQuestion = JSON.parse(question);
@@ -155,7 +157,22 @@ var displayQuestions = function(array, index) {
 		questionText = parsedQuestion.clozeDeleted; //the partial sentence of the full text
 		correctResponse = parsedQuestion.cloze; //the miss phrase from full text
 	}
-
+	inquirer.prompt([{
+		name: 'response',
+		message: questionText
+	}]).then(function(answer) {
+		if (answer.response === correctResponse) {
+			console.log("This is right!");
+			if (index < array.length - 1) {
+				displayQuestions(array, index+1);
+			}
+		} else {
+			console.log("This is incorrect. Please try again.");
+			if (index < array.length - 1) {
+				displayQuestions(array, index + 1);
+			}
+		}
+	});
 }
 
 
