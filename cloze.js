@@ -10,7 +10,7 @@ function ClozeFlashCard(text, cloze) {
 	this.text = text;
 	this.cloze = cloze;
 	this.closeDeleted = this.text.replace(this.cloze, "...");
-	this.create = function() {
+	this.createCard = function() {
 		//create() will return the data object for cloze card
 		var data = {
 			text: this.text,

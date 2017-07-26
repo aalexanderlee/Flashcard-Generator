@@ -1,0 +1,1 @@
+{"front":"What is a Jerome?","back":"40 bagels","type":"basic"};{"front":"What is a Jerome?","back":"40 bagels","type":"basic"};{"front":"What is a Rita?","back":"Push puppies","type":"basic"};{"front":"What is a Rita?","back":"Pushing puppies","type":"basic"};

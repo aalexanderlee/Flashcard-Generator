@@ -19,5 +19,5 @@ function BasicFlashCard(front, back) {
 		fs.appendFile("log.txt", JSON.stringify(data) + ";", "utf8", function(error) {
 			if (error) throw error;
 		});
-	}
+	};
 }
